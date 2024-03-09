@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class CssLocators {
     WebDriver wd;
     @Test
-    public void start() {
+    public void textBox() {
         wd = new ChromeDriver();
         wd.navigate().to("https://demoqa.com/text-box");
 
@@ -23,9 +24,9 @@ public class CssLocators {
 
         WebElement elAddress = wd.findElement(By.cssSelector("#currentAddress")); //find by id
         //System.out.printf("-->" + elAddress.getTagName);
+        wd.close();
 
-        wd.quit();
-    }
+        }
     @Test
     public void checkButtons() {
         wd = new ChromeDriver();
@@ -36,9 +37,8 @@ public class CssLocators {
         WebElement button3 = wd.findElement(By.cssSelector("#MPfhZ"));
 
     }
-
-    @Test
-    public void checkBox() {
-        
+    @AfterClass
+    public void close() {
+        wd.quit();
     }
 }
